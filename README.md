@@ -523,7 +523,7 @@ The project must run immediately when opened locally in a browser.
 ### Prompt Example
 
 Reference documentation:
-
+@DOC - to see list of official documentation
 @OpenAI
 
 Example instruction:
