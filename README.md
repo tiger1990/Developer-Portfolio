@@ -541,11 +541,23 @@ The application should retrieve motivational quotes from an online API or genera
 Include a “New Quote” button that refreshes both the quote and the background image. Ensure the interface has a modern, motivational theme and style it using Tailwind CSS for a responsive and polished design
 Image to be fetched from Unsplash @Web
 ```
+After adding User/Project rules we can specify which rule to refer:
+<img width="602" height="318" alt="Screenshot 2026-03-07 at 8 37 49 PM" src="https://github.com/user-attachments/assets/4750d911-ce68-4221-848b-8d056d694277" />
+</details>
 
+
+MCP - Servers:
+-- https://github.com/modelcontextprotocol/servers
+
+Connect Agents to MCP easily:
+-- https://smithery.ai/
+
+eg: after installing mcp: we can make use of the mcp
+
+-- For GitHub MCP: 
+Use a github mcp to create a new repo-project called “Name” and add a readme in it with detail on MCP.
 
 Helpful resources:
 
 - https://langbase.com/docs/examples/build-agentic-rag
 - https://docs.langchain.com/oss/python/langchain/rag
-
-</details>
