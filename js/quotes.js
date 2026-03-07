@@ -14,9 +14,6 @@
   const CACHE_KEY = "dp_motivation_quotes_cache_v1";
   const cache = new Set(JSON.parse(localStorage.getItem(CACHE_KEY) || "[]"));
 
-  // IMPORTANT: Insert your Unsplash Access Key below (from https://unsplash.com/developers)
-  const UNSPLASH_ACCESS_KEY = "PASTE_YOUR_UNSPLASH_ACCESS_KEY";
-
   const fallbackImages = [
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=70",
     "https://images.unsplash.com/photo-1500534314211-0a24cd03f2c0?auto=format&fit=crop&w=2000&q=70",
@@ -62,19 +59,15 @@
   }
 
   async function fetchUnsplashUrl() {
-    if (!UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY.startsWith("PASTE_")) {
+    try {
+      const res = await fetch("/.netlify/functions/unsplash-random");
+      if (!res.ok) throw new Error("Unsplash function error");
+      const data = await res.json();
+      return data?.urls?.regular || data?.urls?.full;
+    } catch {
       const rnd = fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
       return rnd;
     }
-
-    const url =
-      "https://api.unsplash.com/photos/random?query=motivation,success,growth,inspiration&orientation=landscape&content_filter=high";
-    const res = await fetch(url, {
-      headers: { Authorization: `Client-ID ${UNSPLASH_ACCESS_KEY}` },
-    });
-    if (!res.ok) throw new Error("Unsplash error");
-    const data = await res.json();
-    return data?.urls?.regular || data?.urls?.full;
   }
 
   async function fetchQuoteFromApi() {
